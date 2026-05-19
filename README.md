@@ -109,3 +109,18 @@ Hi fgwsz! You've successfully authenticated, but GitHub does not provide shell a
 ```
 看来现在已经可以使用`ssh`正常连接`github`了,  
 不过是将原先访问的`443`端口改为了访问`22`端口.  
+## 2026.5.19 `Windows`操作系统发生`22`端口没有访问权限问题解决
+使用`git config`切换`22`端口到`443`端口,问题解决.
+```
+$ git pull
+Connection reset by 20.205.243.160 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+$ ssh -T git@github.com
+Hi fgwsz! You've successfully authenticated, but GitHub does not provide shell access.
+$ # 尝试使用不同的 SSH 端口(如果支持)
+$ git config core.sshCommand "ssh -o Port=443"
+$ git pull
+```
