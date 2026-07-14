@@ -124,3 +124,18 @@ $ # 尝试使用不同的 SSH 端口(如果支持)
 $ git config core.sshCommand "ssh -o Port=443"
 $ git pull
 ```
+## 2026.7.14 检测网络连接
+```powershell
+# 检测ssh连接
+ssh -T git@github.com
+# 检测ssh连接 443端口
+ssh -T -p 443 git@github.com
+# 检测ssh连接 22端口
+ssh -T -p 22 git@github.com
+# 检测https连接
+nslookup github.com
+# 检测https连接 443端口
+Test-NetConnection github.com -Port 443
+# 检测https连接 22端口
+Test-NetConnection github.com -Port 22
+```
